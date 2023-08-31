@@ -1,21 +1,19 @@
 use std::collections::BTreeMap;
-use std::io;
+use std::{f64, io};
 mod operations;
-use nalgebra::{Matrix2, Vector4};
-use rusymbols::{core, Expression};
-use colored::*; //? gives colours to text in terminal
+use colored::Colorize;
+use nalgebra::{Matrix2, Matrix3, Point3, Vector4};
+use rusymbols::{core, Expression}; //~ gives colours to text in terminal
 fn print_operations_and_take_input() {
     let mut list_of_operations: BTreeMap<u8, String> = BTreeMap::new();
-    list_of_operations.insert(0, "Create Transformation Matrix".to_string());
-    list_of_operations.insert(1, "Inverse Transformation Matrix".to_string());
-    list_of_operations.insert(2, "Rotate about x".to_string());
-    list_of_operations.insert(3, "Rotate about y".to_string());
-    list_of_operations.insert(4, "Rotate about z".to_string());
-    list_of_operations.insert(5, "Translate".to_string());
-    list_of_operations.insert(6, "Scale".to_string());
-    list_of_operations.insert(7, "Shear".to_string());
-    list_of_operations.insert(8, "Forward Kinematics via DH Parameters".to_string());
-    list_of_operations.insert(9, "Inverse Kinematics".to_string());
+    list_of_operations.insert(1, "Create Transformation Matrix".to_string());
+    list_of_operations.insert(2, "Inverse Transformation Matrix".to_string());
+    list_of_operations.insert(3, "Rotation".to_string());
+    list_of_operations.insert(4, "Translate".to_string());
+    list_of_operations.insert(5, "Scale".to_string());
+    list_of_operations.insert(6, "Shear".to_string());
+    list_of_operations.insert(7, "Forward Kinematics via DH Parameters".to_string());
+    list_of_operations.insert(8, "Inverse Kinematics".to_string());
 
     let number_of_operations: u8 = list_of_operations.len() as u8;
 
@@ -23,7 +21,7 @@ fn print_operations_and_take_input() {
         println!("List of Operations:");
 
         for (idx, operation) in list_of_operations.iter() {
-            println!("{}. {}", idx + 1, operation);
+            println!("{}. {}", idx, operation);
         }
         println!("Enter the operation you would like by index (Enter Quit to escape):");
 
@@ -49,15 +47,16 @@ fn print_operations_and_take_input() {
                 match choice_of_operation {
                     1 => operations::create_transformation_matrix(),
                     2 => operations::inverse_transformation_matrix(),
-                    3 => operations::rotate_about_x(),
-                    4 => operations::rotate_about_y(),
-                    5 => operations::rotate_about_z(),
-                    6 => operations::translate(),
-                    7 => operations::scale(),
-                    8 => operations::shear(),
-                    9 => operations::forward_kinematics_via_dh_parameters(),
-                    10 => operations::inverse_kinematics(),
-                    _ => println!("Invalid input. Please enter a number between 1 and {}.", number_of_operations+1),
+                    3 => operations::rotation(),
+                    4 => operations::translate(),
+                    5 => operations::scale(),
+                    6 => operations::shear(),
+                    7 => operations::forward_kinematics_via_dh_parameters(),
+                    8 => operations::inverse_kinematics(),
+                    _ => println!(
+                        "Invalid input. Please enter a number between 1 and {}.",
+                        number_of_operations + 1
+                    ),
                 }
                 break;
             } else {
@@ -78,15 +77,22 @@ fn print_operations_and_take_input() {
 }
 
 fn test() {
-    // let x = Expression::new_var("x");
-    // // let mut matrix = Matrix2::new(
-    // //     x, 2.0,
-    // //     3.0, 4.0,
-    // // );
-    // let x = Expression::new_var("x"); // new 'x' variable creation
-    // let two = Expression::new_val(2.0); // new 2.0 value creation
-    // let expr = Expression::new(x, two, core::Actions::Mul);
-    // println!("{}", expr);
+    let mut angle: f64 = 30.0;
+    angle = angle.to_radians();
+    let x_rotation_matrix = Matrix3::new(
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        angle.cos(),
+        -angle.sin(),
+        0.0,
+        angle.sin(),
+        angle.cos(),
+    );
+    let pointlist = vec![0.0, 2.0, 0.0];
+    let point = Point3::new(pointlist[0], pointlist[1], pointlist[2]);
+    println!("{}", x_rotation_matrix * point);
 }
 
 fn main() {
