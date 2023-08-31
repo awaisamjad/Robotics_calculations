@@ -1,9 +1,29 @@
 use std::collections::BTreeMap;
 use std::{f64, io};
-mod operations;
 use colored::Colorize;
 use nalgebra::{Matrix2, Matrix3, Point3, Vector4};
-use rusymbols::{core, Expression}; //~ gives colours to text in terminal
+use rusymbols::{core, Expression};
+mod operations{
+    pub mod create_transformation_matrix;
+    pub mod inverse_transformation_matrix;
+    pub mod rotation;
+    pub mod translate;
+    pub mod scale;
+    pub mod shear;
+    pub mod forward_kinematics_via_dh_parameters;
+    pub mod inverse_kinematics;
+
+}
+use crate::operations::create_transformation_matrix::create_transformation_matrix; 
+use crate::operations::inverse_transformation_matrix::inverse_transformation_matrix; 
+use crate::operations::rotation::rotation;
+use crate::operations::translate::translate;
+use crate::operations::scale::scale;
+use crate::operations::shear::shear;
+use crate::operations::forward_kinematics_via_dh_parameters::forward_kinematics_via_dh_parameters;
+use crate::operations::inverse_kinematics::inverse_kinematics;
+
+
 fn print_operations_and_take_input() {
     let mut list_of_operations: BTreeMap<u8, String> = BTreeMap::new();
     list_of_operations.insert(1, "Create Transformation Matrix".to_string());
@@ -45,14 +65,14 @@ fn print_operations_and_take_input() {
                     list_of_operations.get(&choice_of_operation).unwrap()
                 );
                 match choice_of_operation {
-                    1 => operations::create_transformation_matrix(),
-                    2 => operations::inverse_transformation_matrix(),
-                    3 => operations::rotation(),
-                    4 => operations::translate(),
-                    5 => operations::scale(),
-                    6 => operations::shear(),
-                    7 => operations::forward_kinematics_via_dh_parameters(),
-                    8 => operations::inverse_kinematics(),
+                    1 => create_transformation_matrix(),
+                    2 => inverse_transformation_matrix(),
+                    3 => rotation(),
+                    4 => translate(),
+                    5 => scale(),
+                    6 => shear(),
+                    7 => forward_kinematics_via_dh_parameters(),
+                    8 => inverse_kinematics(),
                     _ => println!(
                         "Invalid input. Please enter a number between 1 and {}.",
                         number_of_operations + 1
