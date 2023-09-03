@@ -1,10 +1,10 @@
+use crate::print_operations_and_take_input;
 use colored::Colorize;
 use nalgebra::{Matrix3, Matrix4, Point3, Vector4};
 use std::f64;
 use std::io;
-use crate::print_operations_and_take_input;
 
-pub fn create_transformation_matrix() {
+pub fn create_transformation_matrix()  {
     //~ Create base transformation matrix with all 0 values
     let mut transformation_matrix = Matrix4::new(
         0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
@@ -60,8 +60,8 @@ pub fn create_transformation_matrix() {
                     break;
                 }
                 "2" => {
-                    println!("Going back to list of options."); //TODO Go back to list of options
-                    break;
+                    println!("Going back to list of options."); //~ Go back to list of options
+                    print_operations_and_take_input();
                 }
                 _ => {
                     let error_message =
@@ -137,9 +137,13 @@ pub fn create_transformation_matrix() {
         break;
     }
     println!("Matrix: {}", transformation_matrix);
+    // ~ Loop at end of calulation to ask user if they want to perform operation on result, perform another operation or quit
     loop {
         println!(
-            "Would you like to: 1. Perform operation on result 2. Perform another operation 3. Quit"
+            "Would you like to:\n
+            1. Perform operation on result\n
+            2. Perform another operation\n
+            3. Quit"
         );
 
         let mut user_choice = String::new();
@@ -149,8 +153,39 @@ pub fn create_transformation_matrix() {
 
         match user_choice.trim() {
             "1" => {
-                println!("Performing operation on result.");
-                // Add your operation logic here
+                loop {
+                    println!(
+                    "What operation would you like to perform on the result?\n
+                    1. Inverse\n
+                    2. Multiply by another transformation matrix\n
+                    3. Multiply by an inverse transformation matrix\n"
+                    );
+
+                    let mut user_choice = String::new();
+                    io::stdin()
+                        .read_line(&mut user_choice)
+                        .expect("Failed to read user choice");
+
+                    match user_choice.trim() {
+                        "1" => {
+                            println!("Performing inverse operation on result.");
+                            println!("Matrix: {} ", transformation_matrix.try_inverse().unwrap());
+                            break;
+                        }
+
+                        "2" => {
+                            println!("Operation 2")
+                        }
+
+                        "3" => {
+                            println!("Operation 3")
+                        }
+
+                        _ => {
+                            println!("Invalid choice. Please select 1, 2, or 3.");
+                        }
+                    }
+                } // Closing curly brace for the inner loop
             }
             "2" => {
                 println!("Performing another operation.");
@@ -166,4 +201,5 @@ pub fn create_transformation_matrix() {
             }
         }
     }
+
 }
