@@ -1,8 +1,10 @@
 use colored::Colorize;
-use nalgebra::{Matrix3, Matrix3x1, Matrix4, Vector4};
+
+use messages::messages::exit_message;
+use nalgebra::{Matrix3, Vector3, Point3};
 use regex::Regex;
 use std::collections::BTreeMap;
-use std::io;
+use std::{io, process};
 mod operations {
     pub mod create_transformation_matrix;
     pub mod forward_kinematics_via_dh_parameters;
@@ -26,10 +28,15 @@ mod messages {
 }
 
 use crate::messages::messages::{
-    error_message, information_message, success_message, warning_message,
+    success_message,
 };
 
-fn print_operations_and_take_input() {
+fn exit(exit_code: i32) {
+    exit_message("Exiting Program");
+    process::exit(exit_code);
+}
+
+fn initial_operations() {
     let mut list_of_operations: BTreeMap<u8, String> = BTreeMap::new();
     list_of_operations.insert(1, "Create Transformation Matrix".to_string());
     list_of_operations.insert(2, "Inverse Transformation Matrix".to_string());
@@ -59,16 +66,11 @@ fn print_operations_and_take_input() {
         let user_operation = user_operation.trim();
 
         if user_operation.eq_ignore_ascii_case("Quit") {
-            println!("Exiting program.");
-            break;
+            exit(0);
         }
 
         if let Ok(choice_of_operation) = user_operation.parse::<u8>() {
             if choice_of_operation >= 1 && choice_of_operation <= number_of_operations {
-                // println!(
-                //     "You selected operation: {}",
-                //     list_of_operations.get(&choice_of_operation).unwrap()
-                // );
                 success_message("You selected operation: ");
                 print!("{}\n", list_of_operations.get(&choice_of_operation).unwrap());
                 match choice_of_operation {
@@ -104,35 +106,13 @@ fn print_operations_and_take_input() {
 }
 
 fn test() {
-    // Create a new Regex for validation
-    let pattern = r"^\d+(\.\d+)?(,\d+(\.\d+)?){8}$";
-    let regex = Regex::new(pattern).unwrap();
-
-    // Prompt the user for input
-    loop {
-        println!("Please enter a list of 9 numbers (integers or floats) separated by commas:");
-
-        // Read a line of input from the user
-        let mut input = String::new();
-        io::stdin()
-            .read_line(&mut input)
-            .expect("Failed to read line");
-
-        // Trim leading and trailing whitespace from the input
-        let input = input.trim();
-
-        // Check if the input matches the pattern
-        if regex.is_match(input) {
-            println!("Input is in the correct format.");
-            break; // Exit the loop when the input is correct
-        } else {
-            println!("Input is not in the correct format.");
-        }
-    }
+    let x = Vector3::new(1.0, 2.0, 3.0);
+    println!("x = {}", x);
 }
+
 
 fn main() {
-    print_operations_and_take_input();
+    initial_operations();
     // test();
-    
 }
+

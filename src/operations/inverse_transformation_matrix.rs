@@ -1,10 +1,10 @@
 use colored::Colorize;
-use nalgebra::{Matrix3, Matrix4, Point3, Vector4};
-use std::f64;
-use std::io;
-use crate::{print_operations_and_take_input, create_transformation_matrix};
+use nalgebra::{Matrix4, Vector4};
 
-use super::create_transformation_matrix;
+use std::io;
+
+
+
 
 
 pub fn inverse_transformation_matrix() {
