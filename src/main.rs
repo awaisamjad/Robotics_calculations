@@ -1,10 +1,13 @@
 use colored::Colorize;
-
 use messages::messages::exit_message;
 use nalgebra::{Matrix3, Vector3, Point3};
 use regex::Regex;
 use std::collections::BTreeMap;
 use std::{io, process};
+use crate::messages::messages::{
+    success_message,
+};
+
 mod operations {
     pub mod create_transformation_matrix;
     pub mod forward_kinematics_via_dh_parameters;
@@ -27,9 +30,6 @@ mod messages {
     pub mod messages;
 }
 
-use crate::messages::messages::{
-    success_message,
-};
 
 fn exit(exit_code: i32) {
     exit_message("Exiting Program");

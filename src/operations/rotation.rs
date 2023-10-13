@@ -1,10 +1,10 @@
+use crate::exit;
 use clap::error;
 use colored::Colorize;
 use nalgebra::Vector3;
 use nalgebra::{Matrix3, Point3};
 use std::f64;
 use std::io;
-use crate::exit;
 
 use crate::messages::messages::{error_message, ordered_list_message};
 
@@ -141,8 +141,8 @@ fn read_point() -> Point3<f64> {
     }
 }
 
-///~ 
-fn read_vector() -> Vector3<f64>{
+/// ~ This function asks the user to enter the vector and returns a Vector3<f64>
+fn read_vector() -> Vector3<f64> {
     loop {
         println!("Enter the vector in the following format: x,y,z");
         let mut vector_input = String::new();
@@ -157,13 +157,15 @@ fn read_vector() -> Vector3<f64>{
 
         if vector_values.len() != 3 {
             error_message("Invalid input for vector. Please enter a valid vector.");
-            continue; 
+            continue;
         }
 
         let vector = Vector3::new(vector_values[0], vector_values[1], vector_values[2]);
         return vector;
     }
 }
+
+/// ~ function for rotation matrix about x axis
 fn rotation_about_x(angle: f64) -> Matrix3<f64> {
     Matrix3::new(
         1.0,
@@ -177,7 +179,7 @@ fn rotation_about_x(angle: f64) -> Matrix3<f64> {
         angle.cos(),
     )
 }
-
+/// ~ function for rotation matrix about y axis
 fn rotation_about_y(angle: f64) -> Matrix3<f64> {
     Matrix3::new(
         angle.cos(),
@@ -191,7 +193,7 @@ fn rotation_about_y(angle: f64) -> Matrix3<f64> {
         angle.cos(),
     )
 }
-
+/// ~ function for rotation matrix about z axis
 fn rotation_about_z(angle: f64) -> Matrix3<f64> {
     Matrix3::new(
         angle.cos(),
@@ -205,7 +207,7 @@ fn rotation_about_z(angle: f64) -> Matrix3<f64> {
         1.0,
     )
 }
-
+/// ~ function to rotate a point about x axis
 fn rotate_point_about_x_axis() -> Point3<f64> {
     let point = read_point();
     let angle = read_angle();
@@ -213,37 +215,40 @@ fn rotate_point_about_x_axis() -> Point3<f64> {
     rotated_point
 }
 
+/// ~ function to rotate a point about y axis
 fn rotate_point_about_y_axis() -> Point3<f64> {
     let point = read_point();
     let angle = read_angle();
     let rotated_point = rotation_about_y(angle) * point;
     rotated_point
 }
-
+/// ~ function to rotate a point about z axis
 fn rotate_point_about_z_axis() -> Point3<f64> {
     let point = read_point();
     let angle = read_angle();
     let rotated_point = rotation_about_z(angle) * point;
     rotated_point
 }
-
+/// ~ function to rotate a vector about x axis
 fn rotate_vector_about_x_axis() -> Vector3<f64> {
     let vector = read_vector();
     let angle = read_angle();
     let rotated_vector = rotation_about_x(angle) * vector;
     rotated_vector
 }
-
+/// ~ function to rotate a vector about y axis
 fn rotate_vector_about_y_axis() -> Vector3<f64> {
     let vector = read_vector();
     let angle = read_angle();
     let rotated_vector = rotation_about_y(angle) * vector;
     rotated_vector
 }
-
+/// ~ function to rotate a vector about z axis
 fn rotate_vector_about_z_axis() -> Vector3<f64> {
     let vector = read_vector();
     let angle = read_angle();
     let rotated_vector = rotation_about_z(angle) * vector;
     rotated_vector
 }
+
+// fn operations_to_perform_on_point()
