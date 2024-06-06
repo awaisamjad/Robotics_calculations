@@ -1,15 +1,15 @@
 use colored::Colorize;
 /// ~ This function prints a warning message to the console in yellow.
-pub fn warning_message(error_message: &str, values: &[&dyn std::fmt::Display]) {
-    let values_str: String = values
-        .iter()
-        .map(|val| val.to_string())
-        .collect::<Vec<String>>()
-        .join(", ");
+// pub fn warning_message(error_message: &str, values: &[&dyn std::fmt::Display]) {
+//     let values_str: String = values
+//         .iter()
+//         .map(|val| val.to_string())
+//         .collect::<Vec<String>>()
+//         .join(", ");
 
-    let warning_message = format!("Warning => {} {}", error_message, values_str);
-    println!("{}", warning_message.yellow());
-}
+//     let warning_message = format!("Warning => {} {}", error_message, values_str);
+//     println!("{}", warning_message.yellow());
+// }
 /// ~ This function prints a success message to the console in green.
 pub fn success_message(success_message: &str) {
     println!("{}", format!("Success => {}", success_message).green());
@@ -19,12 +19,12 @@ pub fn error_message(error_message: &str) {
     println!("{}", format!("Error => {}", error_message).red());
 }
 /// ~ This function prints an information message to the console in blue.
-pub fn information_message(information_message: &str) {
-    println!(
-        "{}",
-        format!("Information => {}", information_message).blue()
-    );
-}
+// pub fn information_message(information_message: &str) {
+//     println!(
+//         "{}",
+//         format!("Information => {}", information_message).blue()
+//     );
+// }
 /// ~ This function prints a highlighted message to the console in purple.
 pub fn highlighted_message(highlighted_message: &str) {
     println!("{}", highlighted_message.purple());

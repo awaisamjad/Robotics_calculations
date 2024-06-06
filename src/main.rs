@@ -1,12 +1,10 @@
 use colored::Colorize;
 use messages::messages::exit_message;
-use nalgebra::{Matrix3, Vector3, Point3};
-use regex::Regex;
+// use nalgebra::Vector3;
+
 use std::collections::BTreeMap;
 use std::{io, process};
-use crate::messages::messages::{
-    success_message,
-};
+use crate::messages::messages::success_message;
 
 mod operations {
     pub mod create_transformation_matrix;
@@ -105,10 +103,10 @@ fn initial_operations() {
     }
 }
 
-fn test() {
-    let x = Vector3::new(1.0, 2.0, 3.0);
-    println!("x = {}", x);
-}
+// fn test() {
+//     let x = Vector3::new(1.0, 2.0, 3.0);
+//     println!("x = {}", x);
+// }
 
 
 fn main() {

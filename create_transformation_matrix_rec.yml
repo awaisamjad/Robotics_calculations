@@ -1,0 +1,259 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: powershell.exe
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: C:\Users\User\Code\Rust\robotics_calculations
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 120
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 30
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 941
+    content: "\e[2J\e[m\e[HWindows PowerShell\r\nCopyright (C) Microsoft Corporation. All rights reserved.\r\n\r\nTry the new cross-platform PowerShell https://aka.ms/pscore6\e]0;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\a\e[?25h"
+  - delay: 14
+    content: "\e[25l\e[6;1H\e[?25h"
+  - delay: 913
+    content: 'PS C:\Users\User\Code\Rust\robotics_calculations> '
+  - delay: 1251
+    content: "\e[?25l"
+  - delay: 22
+    content: "\e[93mc\e[?25h"
+  - delay: 15
+    content: "\e[m\e[93m\bca"
+  - delay: 203
+    content: "\e[m\e[?25l"
+  - delay: 16
+    content: "\e[93m\e[6;51Hcar\e[?25h"
+  - delay: 183
+    content: "\e[m\e[?25l"
+  - delay: 22
+    content: "\e[93m\e[6;51Hcarg\e[?25h"
+  - delay: 63
+    content: "\e[m\e[?25l"
+  - delay: 13
+    content: "\e[93m\e[6;51Hcargo\e[?25h"
+  - delay: 191
+    content: "\e[m\e[?25l"
+  - delay: 12
+    content: "\e[93m\e[6;51Hcargo\e[m \e[?25h"
+  - delay: 1116
+    content: "\e[?25l"
+  - delay: 16
+    content: "\e[93m\e[6;51Hcargo\e[m r\e[?25h"
+  - delay: 140
+    content: "\r\n"
+  - delay: 231
+    content: "\e[1m\e[92m "
+  - delay: 23
+    content: "\e[m\e[1m\e[92m\r    Finished\e[m dev [unoptimized + debuginfo] target(s) in 0.13s      \e[1m\e[92m\r\n     Running\e[m `target\\debug\\linear_algebra_test.exe`\e[16X\r\nList of Operations:\e[48X\r\n1. Create Transformation Matrix\e[36X\r\n2. Inverse Transformation Matrix\e[35X\r\n3. Rotation\e[56X\r\n4. Translate\e[55X\r\n5. Scale\e[59X\r\n6. Shear\e[59X\r\n7. Forward Kinematics via DH Parameters\e[28X\r\n8. Inverse Kinematics\e[46X\r\nEnter the operation you would like by index (Enter Quit to escape):\r\n"
+  - delay: 1547
+    content: '1'
+  - delay: 254
+    content: "\r\n"
+  - delay: 18
+    content: "\e[32mSuccess => You selected operation: \e[m\e[55X\r\nCreate Transformation Matrix\e[62X\r\nEnter values for the transformation matrix in the following format (Enter Quit to escape):\e[35m\r\nRotation Matrix: r11,r12,r13,r21,r22,23,r31,r32,r33 - Example: 1,2,3,4,5,6,7,8,9\e[m\e[10X\e[35m\r\nTranslation Vector: p1,p2,p3 - Example: 10,11,12\e[m\e[42X\r\n"
+  - delay: 1347
+    content: '1'
+  - delay: 148
+    content: ','
+  - delay: 113
+    content: '2'
+  - delay: 136
+    content: ','
+  - delay: 139
+    content: '3'
+  - delay: 134
+    content: ','
+  - delay: 145
+    content: '4'
+  - delay: 104
+    content: ','
+  - delay: 171
+    content: '5'
+  - delay: 122
+    content: ','
+  - delay: 191
+    content: '6'
+  - delay: 69
+    content: ','
+  - delay: 319
+    content: '7'
+  - delay: 179
+    content: ','
+  - delay: 244
+    content: '8'
+  - delay: 157
+    content: ','
+  - delay: 327
+    content: '9'
+  - delay: 395
+    content: "\r\n"
+  - delay: 672
+    content: '1'
+  - delay: 160
+    content: ','
+  - delay: 108
+    content: '2'
+  - delay: 108
+    content: ','
+  - delay: 129
+    content: '3'
+  - delay: 838
+    content: "\r\nRotation Matrix Values: \r\n  ┌       ┐\e[13X\r\n  │ 1 2 3 │\e[13X\r\n  │ 4 5 6 │\e[13X\r\n  │ 7 8 9 │\r\n  └       ┘\r\n\n\nTranslation Vector:\e[1C\r\n  ┌   ┐\r\n  │ 1 │\r\n  │ 2 │\r\n  │ 3 │\r\n  └   ┘\r\n\n\nTransformation Matrix:\e[1C\r\n  ┌         ┐\r\n  │ 1 2 3 1 │\r\n  │ 4 5 6 2 │\r\n  │ 7 8 9 3 │\r\n  │ 0 0 0 1 │\r\n  └         ┘\r\n\n\e[3m\e[34m\nWould you like to:\e[23m\e[m\e[K\e[3m\e[34m\r\n1. Perform operation on result\r\n2. Go back to initial operations\e[23m\e[m\r\n\e[3m\e[34m3. Quit"
+  - delay: 15
+    content: "\e[23m\e[m\r\n"
+  - delay: 1745
+    content: '1'
+  - delay: 474
+    content: "\r\n\e[3m\e[34mWhat operation would you like to perform on the result?\r\n1. Inverse\r\n2. Multiply by another transformation matrix\r\n3. Multiply by an inverse transformation matrix\r\n4. Go back to initial operations\e[1C\e[23m\e[m\r\n\e[3m\e[34m5. Quit"
+  - delay: 11
+    content: "\e[23m\e[m\r\n"
+  - delay: 1927
+    content: '1'
+  - delay: 252
+    content: "\r\nPerforming inverse operation on result.\r\n\n  ┌                 ┐\r\n  │   1   4   7 -30 │\r\n  │   2   5   8 -36 │\r\n  │   3   6   9 -42 │\r\n  │   0   0   0   1 │\r\n  └                 ┘\r\n\n\e[3m\e[34m\nWhat operation would you like to perform on the result?\e[23m\e[m\e[K\e[3m\e[34m\r\n1. Inverse\r\n2. Multiply by another transformation matrix\r\n3. Multiply by an inverse transformation matrix\r\n4. Go back to initial operations\e[1C\e[23m\e[m\r\n\e[3m\e[34m5. Quit"
+  - delay: 9
+    content: "\e[23m\e[m\r\n"
+  - delay: 3095
+    content: '4'
+  - delay: 566
+    content: "\r\nDone performing operations. Going back to initial operations.\r\nList of Operations:\r\n1. Create Transformation Matrix\r\n2. Inverse Transformation Matrix\r\n3. Rotation\r\n4. Translate\r\n5. Scale\r\n6. Shear\r\n7. Forward Kinematics via DH Parameters\r\n8. Inverse Kinematics\r\nEnter the operation you would like by index (Enter Quit to escape):"
+  - delay: 6
+    content: "\r\n"
+  - delay: 2366
+    content: q
+  - delay: 194
+    content: u
+  - delay: 66
+    content: i
+  - delay: 243
+    content: t
+  - delay: 350
+    content: "\r\n\e[1m\e[91mExiting Program"
+  - delay: 21
+    content: "\e[m\r\n"
+  - delay: 15
+    content: 'PS C:\Users\User\Code\Rust\robotics_calculations> '
+  - delay: 1239
+    content: "\e[?25l"
+  - delay: 21
+    content: "\e[93me\e[?25h"
+  - delay: 56
+    content: "\e[m\e[?25l"
+  - delay: 22
+    content: "\e[93m\bex\e[?25h"
+  - delay: 150
+    content: "\e[m\e[?25l"
+  - delay: 22
+    content: "\e[93m\e[30;51Hexi\e[?25h"
+  - delay: 183
+    content: "\e[m\e[?25l"
+  - delay: 19
+    content: "\e[92m\e[30;51Hexit\e[?25h"
+  - delay: 526
+    content: "\e[25l\e[m\e[H  ┌                 ┐\e[K\r\n  │   1   4   7 -30 │\e[K\r\n  │   2   5   8 -36 │\e[K\r\n  │   3   6   9 -42 │\e[K\r\n  │   0   0   0   1 │\e[K\r\n  └                 ┘\e[K\r\n\e[K\r\n\e[K\e[3m\e[34m\r\nWhat operation would you like to perform on the result?\e[23m\e[m\e[K\e[3m\e[34m\r\n1. Inverse\e[K\r\n2. Multiply by another transformation matrix\e[K\r\n3. Multiply by an inverse transformation matrix\e[K\r\n4. Go back to initial operations\e[K\r\n5. Quit\e[K\e[23m\e[m\r\n4\e[K\r\nDone performing operations. Going back to initial operations.\e[K\r\nList of Operations:\e[K\r\n1. Create Transformation Matrix\e[K\r\n2. Inverse Transformation Matrix\e[K\r\n3. Rotation\e[K\r\n4. Translate\e[K\r\n5. Scale\e[K\r\n6. Shear\e[K\r\n7. Forward Kinematics via DH Parameters\e[K\r\n8. Inverse Kinematics\e[K\r\nEnter the operation you would like by index (Enter Quit to escape):\e[K\r\nquit\e[K\e[1m\e[91m\r\nExiting Program\e[m\e[K\r\nPS C:\\Users\\User\\Code\\Rust\\robotics_calculations> \e[92mexit\e[m\e[K\r\n\e[K\e[54C\e[?25h"
+  - delay: 21
+    content: "\r"
